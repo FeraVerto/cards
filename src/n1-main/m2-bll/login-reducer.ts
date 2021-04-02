@@ -1,8 +1,7 @@
 type ActionType = ''
 
-export let loginReducer = (state = {}, action: ActionType) => {
-    switch (action) {
-        case "":
-            return state
-    }
+let initialState = {}
+
+export const loginReducer = (state = initialState, action: ActionType) => {
+   return  state
 }
