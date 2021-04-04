@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <div>
             <NavLink to='/login'>login</NavLink>
-            <NavLink to='/register'>register</NavLink>
+            <NavLink to='/registration'>registration</NavLink>
             <NavLink to='/profile'>profile</NavLink>
             <NavLink to='/recovery'>recovery</NavLink>
             <NavLink to='/new'>new</NavLink>
