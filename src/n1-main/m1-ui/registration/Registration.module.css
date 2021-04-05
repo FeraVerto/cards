@@ -1,0 +1,50 @@
+.form {
+    margin: 0 auto;
+    margin-top: 50px;
+
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form_item {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form_item input {
+    padding: 10px;
+
+    width: 100%;
+    height: 40px;
+
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid black;
+
+}
+
+input {
+    background-color: #fff;
+}
+
+.button {
+    height: 40px;
+
+    background-color: #fff;
+    border: 2px solid black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.error,
+.loading {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.loading {
+    font-size: 30px;
+}

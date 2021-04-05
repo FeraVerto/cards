@@ -4,6 +4,7 @@ import {registration} from "../../m2-bll/registration-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../m2-bll/store";
 import {Redirect} from "react-router-dom";
+import s from "./Registration.module.css"
 
 type ErrorType = {
     email?: string
@@ -51,25 +52,33 @@ export const Registration = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={formik.handleSubmit}>
-                <input type="text"
-                       {...formik.getFieldProps('email')}
-                />
+        <div className={s.registration}>
+            <h1>Форма регистрации</h1>
+            <form className={s.form} onSubmit={formik.handleSubmit}>
 
-                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                <div className={s.form_item}>
+                    <input type="text"
+                           placeholder="Введите логин"
+                           {...formik.getFieldProps('email')}
+                    />
+                    {formik.touched.email && formik.errors.email ? <div className={s.error}>{formik.errors.email}</div> : null}
+                </div>
 
-                <input type="password"
-                       {...formik.getFieldProps('password')}
-                />
+                <div className={s.form_item}>
+                    <input type="password"
+                           placeholder="Введите пароль"
+                           {...formik.getFieldProps('password')}
+                    />
 
-                {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                    {formik.touched.password && formik.errors.password ? <div className={s.error}>{formik.errors.password}</div> : null}
+                </div>
 
-                <button type='submit' disabled={isLoading}>Зарегистрироваться</button>
+                <button className={s.button} type='submit' disabled={isLoading}>Зарегистрироваться</button>
+
             </form>
 
-            {error && <div>{error}</div>}
-            {isLoading && <div>LOADING...</div>}
+            {error && <div className={s.error}>{error}</div>}
+            {isLoading && <div className={s.loading}>LOADING...</div>}
         </div>
 
     )
