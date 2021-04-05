@@ -5,11 +5,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../m2-bll/store";
 import {Redirect} from "react-router-dom";
 
+type ErrorType = {
+    email?: string
+    password?: string
+}
+
 export const Registration = () => {
 
     const dispatch = useDispatch()
-    const error = useSelector<AppStateType, string>(state => state.registration.error)
-    const redirect = useSelector<AppStateType, boolean>(state => state.registration.redirect)
+    const error = useSelector<AppStateType, string | null>(state => state.registration.error)
+    const redirect = useSelector<AppStateType, boolean>(state => state.registration.isRedirecting)
     const isLoading = useSelector<AppStateType, boolean>(state => state.registration.isLoading)
 
     const formik = useFormik({
@@ -17,10 +22,27 @@ export const Registration = () => {
             email: '',
             password: ''
         },
+
         onSubmit: values => {
             dispatch(registration(values.email, values.password))
             //formik.resetForm()
-            //console.log(JSON.stringify(values));
+        },
+
+        validate: (values) => {
+            const errors: ErrorType = {};
+            if (!values.email) {
+                errors.email = 'Required';
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                errors.email = 'Invalid email address';
+            }
+
+            if (!values.password) {
+                errors.password = 'Required';
+            } else if (values.password.length < 5) {
+                errors.password = 'Password should be more 5 symbols';
+            }
+
+            return errors;
         }
     })
 
@@ -33,22 +55,21 @@ export const Registration = () => {
             <form onSubmit={formik.handleSubmit}>
                 <input type="text"
                        {...formik.getFieldProps('email')}
-                       /*name="email"
-                       onChange={formik.handleChange}
-                       value={formik.values.email}*/
                 />
+
+                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+
                 <input type="password"
                        {...formik.getFieldProps('password')}
-                       /*name="password"
-                       onChange={formik.handleChange}
-                       value={formik.values.password}*/
                 />
-                <button type='submit'>Зарегистрироваться</button>
+
+                {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+
+                <button type='submit' disabled={isLoading}>Зарегистрироваться</button>
             </form>
 
             {error && <div>{error}</div>}
-            {isLoading && <div>LOADING</div>}
-
+            {isLoading && <div>LOADING...</div>}
         </div>
 
     )

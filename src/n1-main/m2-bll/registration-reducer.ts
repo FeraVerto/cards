@@ -22,21 +22,21 @@ type initialStateType = typeof initialState
 
 
 let initialState = {
-    redirect: false,
+    isRedirecting: false,
     isLoading: false,
-    error: ""
+    error: null as string | null
 }
 
 export let registrationReducer = (state = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case ACTIONS_TYPE.REDIRECT:
-            return {...state, ...action.payload}
+            return {...state, isRedirecting: action.payload.redirect}
 
         case ACTIONS_TYPE.ERROR:
-            return {...state, ...action.payload}
+            return {...state, error: action.payload.error}
 
         case ACTIONS_TYPE.LOADING:
-            return {...state, ...action.payload}
+            return {...state, isLoading: action.payload.loading}
         default:
             return state
     }
@@ -47,7 +47,7 @@ export let redirectAC = (redirect: boolean) => ({
     payload: {redirect}
 } as const)
 
-let errorAC = (error: string) => ({
+let errorAC = (error: string | null) => ({
     type: ACTIONS_TYPE.ERROR,
     payload: {error}
 } as const)
@@ -65,10 +65,11 @@ export let registration = (email: string, password: string): ThunkType => async 
         dispatch(loadingAC(false))
         dispatch(redirectAC(true))
         dispatch(redirectAC(false))
+        dispatch(errorAC(null))
     } catch (e) {
         const err = e.response
-        dispatch(loadingAC(false))
         dispatch(errorAC(err.data.error))
+        dispatch(loadingAC(false))
     }
 }
 

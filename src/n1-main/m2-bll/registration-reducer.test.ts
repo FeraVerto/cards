@@ -2,7 +2,7 @@ let state;
 
 beforeEach(() => {
     state = {
-        redirect: false,
+        isRedirecting: false,
         isLoading: false,
         error: ""
     }
