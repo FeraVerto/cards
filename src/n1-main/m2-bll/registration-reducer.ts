@@ -30,13 +30,13 @@ let initialState = {
 export let registrationReducer = (state = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case ACTIONS_TYPE.REDIRECT:
-            return {...state, redirect: action.redirect}
+            return {...state, ...action.payload}
 
         case ACTIONS_TYPE.ERROR:
-            return {...state, error: action.error}
+            return {...state, ...action.payload}
 
         case ACTIONS_TYPE.LOADING:
-            return {...state, isLoading: action.loading}
+            return {...state, ...action.payload}
         default:
             return state
     }
@@ -44,17 +44,17 @@ export let registrationReducer = (state = initialState, action: ActionType): ini
 
 export let redirectAC = (redirect: boolean) => ({
     type: ACTIONS_TYPE.REDIRECT,
-    redirect
+    payload: {redirect}
 } as const)
 
 let errorAC = (error: string) => ({
     type: ACTIONS_TYPE.ERROR,
-    error
+    payload: {error}
 } as const)
 
 let loadingAC = (loading: boolean) => ({
     type: ACTIONS_TYPE.LOADING,
-    loading
+    payload: {loading}
 } as const)
 
 

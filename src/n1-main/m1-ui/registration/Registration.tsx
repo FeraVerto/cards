@@ -24,25 +24,31 @@ export const Registration = () => {
         }
     })
 
+    if (redirect) {
+        return <Redirect to={'login'}/>
+    }
+
     return (
         <div>
             <form onSubmit={formik.handleSubmit}>
                 <input type="text"
-                       name="email"
+                       {...formik.getFieldProps('email')}
+                       /*name="email"
                        onChange={formik.handleChange}
-                       value={formik.values.email}
+                       value={formik.values.email}*/
                 />
                 <input type="password"
-                       name="password"
+                       {...formik.getFieldProps('password')}
+                       /*name="password"
                        onChange={formik.handleChange}
-                       value={formik.values.password}
+                       value={formik.values.password}*/
                 />
                 <button type='submit'>Зарегистрироваться</button>
             </form>
 
             {error && <div>{error}</div>}
             {isLoading && <div>LOADING</div>}
-            {redirect && <Redirect to={'login'}/>}
+
         </div>
 
     )
