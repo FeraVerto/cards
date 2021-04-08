@@ -21,7 +21,8 @@ export const Registration = () => {
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: ''
+            password: '',
+            confirmPassword: ''
         },
 
         onSubmit: values => {
@@ -39,8 +40,12 @@ export const Registration = () => {
 
             if (!values.password) {
                 errors.password = 'Required';
-            } else if (values.password.length < 5) {
-                errors.password = 'Password should be more 5 symbols';
+            } else if (values.password.length <= 7) {
+                errors.password = 'Password should be more 7 symbols';
+            }
+
+            if(values.password !== values.confirmPassword && values.confirmPassword !== "") {
+                errors.password = 'Passwords do not match'
             }
 
             return errors;
@@ -53,7 +58,7 @@ export const Registration = () => {
 
     return (
         <div className={s.registration}>
-            <h1>Форма регистрации</h1>
+            <h1 className={s.h1}>Форма регистрации</h1>
             <form className={s.form} onSubmit={formik.handleSubmit}>
 
                 <div className={s.form_item}>
@@ -61,7 +66,8 @@ export const Registration = () => {
                            placeholder="Введите логин"
                            {...formik.getFieldProps('email')}
                     />
-                    {formik.touched.email && formik.errors.email ? <div className={s.error}>{formik.errors.email}</div> : null}
+                    {formik.touched.email && formik.errors.email ?
+                        <div className={s.error}>{formik.errors.email}</div> : null}
                 </div>
 
                 <div className={s.form_item}>
@@ -70,14 +76,25 @@ export const Registration = () => {
                            {...formik.getFieldProps('password')}
                     />
 
-                    {formik.touched.password && formik.errors.password ? <div className={s.error}>{formik.errors.password}</div> : null}
+                    {formik.touched.password && formik.errors.password ?
+                        <div className={s.error}>{formik.errors.password}</div> : null}
+                </div>
+
+                <div className={s.form_item}>
+                    <input type="password"
+                           placeholder="Введите пароль еще раз"
+                           {...formik.getFieldProps('confirmPassword')}
+                    />
+
+                    {formik.touched.confirmPassword && formik.errors.confirmPassword ?
+                        <div className={s.error}>{formik.errors.confirmPassword}</div> : null}
                 </div>
 
                 <button className={s.button} type='submit' disabled={isLoading}>Зарегистрироваться</button>
 
             </form>
 
-            {error && <div className={s.error}>{error}</div>}
+            {error && !isLoading && <div className={s.error}>{error}</div>}
             {isLoading && <div className={s.loading}>LOADING...</div>}
         </div>
 

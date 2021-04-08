@@ -67,6 +67,7 @@ export let registration = (email: string, password: string): ThunkType => async 
         dispatch(redirectAC(false))
         dispatch(errorAC(null))
     } catch (e) {
+        console.log(e)
         const err = e.response
         dispatch(errorAC(err.data.error))
         dispatch(loadingAC(false))
