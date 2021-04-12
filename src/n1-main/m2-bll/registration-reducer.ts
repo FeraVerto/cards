@@ -1,7 +1,7 @@
-import {api} from "../m3-dal/api";
 import {Dispatch} from "react";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./store";
+import {registrationAPI} from "../m3-dal/api";
 
 //variables
 export enum ACTIONS_TYPE {
@@ -61,7 +61,7 @@ let loadingAC = (loading: boolean) => ({
 export let registration = (email: string, password: string): ThunkType => async (dispatch: Dispatch<ActionType>) => {
     dispatch(loadingAC(true))
     try {
-        await api.registration(email, password)
+        await registrationAPI.registration(email, password)
         dispatch(loadingAC(false))
         dispatch(redirectAC(true))
         dispatch(redirectAC(false))

@@ -1,6 +1,10 @@
 .registration{
 }
 
+.h1 {
+    text-align: center;
+}
+
 .form {
     margin: 0 auto;
     margin-top: 50px;
