@@ -7,6 +7,8 @@ import {profileReducer} from "./profile-reducer";
 import {passwordRecoveryReducer} from "./password-recovery-reducer";
 import {enterNewPasswordReducer} from "./enter-new-password-reducer";
 import {appReducer} from "./app-reducer";
+import {packsReducer} from "./packs-reducer";
+import {cardsReducer} from "./cards-reducer";
 
 let rootReducer = combineReducers({
     login: loginReducer,
@@ -14,7 +16,9 @@ let rootReducer = combineReducers({
     profile: profileReducer,
     passwordRecovery: passwordRecoveryReducer,
     enterNewPassword: enterNewPasswordReducer,
-    app: appReducer
+    app: appReducer,
+    packs: packsReducer,
+    cards: cardsReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>
