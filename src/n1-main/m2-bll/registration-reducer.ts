@@ -13,7 +13,7 @@ export enum ACTIONS_TYPE {
 //typing
 type redirectACType = ReturnType<typeof redirectAC>
 type errorACType = ReturnType<typeof errorAC>
-type loadingACType = ReturnType<typeof loadingAC>
+export type loadingACType = ReturnType<typeof loadingAC>
 type ActionType = redirectACType | errorACType | loadingACType
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>
@@ -52,7 +52,7 @@ let errorAC = (error: string | null) => ({
     payload: {error}
 } as const)
 
-let loadingAC = (loading: boolean) => ({
+export let loadingAC = (loading: boolean) => ({
     type: ACTIONS_TYPE.LOADING,
     payload: {loading}
 } as const)

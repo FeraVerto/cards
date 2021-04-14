@@ -11,6 +11,8 @@ const Nav = () => {
         <NavLink to={PATH.RESET_PASS}>Password recovery</NavLink>
         <NavLink to={PATH.NEW_PASS}>New password</NavLink>
         <NavLink to={PATH.TEST}>Show all</NavLink>
+        <NavLink to={PATH.PACKS}>Packs</NavLink>
+        <NavLink to={PATH.CARDS}>Cards</NavLink>
     </nav>
 }
 

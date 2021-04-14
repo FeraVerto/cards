@@ -1,5 +1,5 @@
 import axios from "axios";
-import {LoginResponseType, LogoutResponseType} from "../m1-ui/common/types/types";
+import {LoginResponseType, LogoutResponseType, PacksResponseType} from "../m1-ui/common/types/types";
 
 const instance = axios.create({
     //baseURL: 'https://neko-back.herokuapp.com/2.0',
@@ -39,6 +39,12 @@ export const newPasswordAPI = {
 }
 export const lostPasswordAPI = {
     postEmail(email: string) {
-        return instance.post(`auth/forgot`, {email, from: "cards-admin <valdismin@gmail.com>", message: `<div style="background-color: lime; padding: 15px"> password recovery link: <a href='https://RomanRadaykinFrontend.github.io/friday-project/#/enter-new-password/$token$'>link</a></div>`}).then(response => response.data)
+        return instance.post(`auth/forgot`, {email, from: "cards-admin <themightymasha@gmail.com>", message: `<div style="background-color: lime; padding: 15px"> password recovery link: <a href='https://feraverto.github.io/cards/#/enter-new-password/$token$'>link</a></div>`}).then(response => response.data)
+    }
+}
+
+export const packsAPI = {
+    getPacks() {
+        return instance.get<PacksResponseType>(`/cards/pack`).then(response => response.data)
     }
 }
