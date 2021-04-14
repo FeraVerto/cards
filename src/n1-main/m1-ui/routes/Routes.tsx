@@ -6,7 +6,7 @@ import Profile from "../profile/Profile";
 import {EnterNewPassword} from "../enterNewPassword/EnterNewPassword";
 import {PasswordRecovery} from "../passwordRecovery/PasswordRecovery";
 import Error404 from "../error404/Error404";
-import Table from "../table/Table";
+import Table3 from "../table/Table3";
 import {Packs} from "../packs/Packs";
 import {Cards} from "../cards/Cards";
 

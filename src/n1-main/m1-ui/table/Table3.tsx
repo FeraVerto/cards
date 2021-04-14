@@ -23,7 +23,7 @@ interface ITableProps {
 
 
 
-const Table: React.FC<ITableProps> = (
+const Table3: React.FC<ITableProps> = (
     {
         // loading,
         // error,
@@ -102,4 +102,4 @@ const Table: React.FC<ITableProps> = (
     );
 };
 
-export default Table;
+export default Table3;

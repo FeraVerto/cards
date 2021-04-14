@@ -1,59 +1,22 @@
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../m2-bll/store";
-import {cardPacksType, PacksResponseType} from "../common/types/types";
-import React, {useMemo, useState} from 'react'
+import {cardPacksType} from "../common/types/types";
+import React from 'react'
+import {useSortableData} from "../hooks/useSortableData";
 
-let title = ["name", "cardsCount", "updated"]
-
-type Table2Props = {
+type TableProps = {
     items: cardPacksType
 }
 
 
-export const Table2: React.FC<Table2Props> = (props) => {
+export const Table: React.FC<TableProps> = (props) => {
 
-    const useSortableData = (items: cardPacksType, config = null) => {
-
-        const [sortConfig, setSortConfig] = useState<{
-            key: string
-            direction: string
-        } | null>(config);
-
-        const sortedItems = useMemo(() => {
-            let sortableItems = [...items];
-            console.log("sortableItems ", items)
-            if (sortConfig !== null) {
-                sortableItems.sort((a: any, b: any) => {
-                    if (a[sortConfig.key] < b[sortConfig.key]) {
-                        return sortConfig.direction === 'ascending' ? -1 : 1;
-                    }
-                    if (a[sortConfig.key] > b[sortConfig.key]) {
-                        return sortConfig.direction === 'ascending' ? 1 : -1;
-                    }
-                    return 0;
-                });
-            }
-            return sortableItems;
-        }, [items, sortConfig]);
-
-        const requestSort = (key: string) => {
-            let direction = 'ascending';
-            if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-                direction = 'descending';
-            }
-            setSortConfig({key, direction});
-        }
-
-        return {items: sortedItems, requestSort, sortConfig};
-    }
-
-    const {items, requestSort, sortConfig} = useSortableData(props.items);
-    const getClassNamesFor = (name: string) => {
+    const {items, requestSort} = useSortableData(props.items);
+    //const {items, requestSort, sortConfig} = useSortableData(props.items);
+    /*const getClassNamesFor = (name: string) => {
         if (!sortConfig) {
             return;
         }
         return sortConfig.key === name ? sortConfig.direction : undefined;
-    };
+    };*/
 
     return (
         <table>
@@ -61,19 +24,17 @@ export const Table2: React.FC<Table2Props> = (props) => {
             <thead>
             <tr>
                 <th>
-                    <button type="button" onClick={() => requestSort('name')} className={getClassNamesFor('name')}>
+                    <button type="button" onClick={() => requestSort('name')}>
                         name
                     </button>
                 </th>
                 <th>
-                    <button type="button" onClick={() => requestSort('cardsCount')}
-                            className={getClassNamesFor('cardsCount')}>
+                    <button type="button" onClick={() => requestSort('cardsCount')}>
                         cardsCount
                     </button>
                 </th>
                 <th>
-                    <button type="button" onClick={() => requestSort('updated')}
-                            className={getClassNamesFor('updated')}>
+                    <button type="button" onClick={() => requestSort('updated')}>
                         updated
                     </button>
                 </th>

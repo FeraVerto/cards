@@ -1,9 +1,9 @@
-import Table from "../table/Table";
+import Table3 from "../table/Table3";
 
 export const Cards = () => {
     return (
         <div>
-            {/*<Table/>*/}
+            {/*<Table3/>*/}
             Table
         </div>
     )
