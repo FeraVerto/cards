@@ -1,6 +1,6 @@
-import {cardPacksType} from "../common/types/types";
 import React from 'react'
 import {useSortableData} from "../hooks/useSortableData";
+import {cardPacksType} from "../common/types/types";
 
 type TableProps = {
     items: cardPacksType
