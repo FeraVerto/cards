@@ -77,7 +77,6 @@ const successLogoutAC = (isAuth: boolean) => (
 export const isAuthTC = () => (dispatch: Dispatch<ActionType>) => {
     loginAPI.isAuth()
         .then(res => {
-            debugger
             dispatch(successLoginAC(res.data, true, ''))
         })
         .catch((e) => {

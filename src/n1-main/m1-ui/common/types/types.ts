@@ -24,3 +24,29 @@ export type LogoutResponseType = {
 
     error: string;
 }
+
+export type cardType = {
+    _id: string
+    user_id: string
+    name: string
+    path: "/def" // папка
+    cardsCount: number
+    grade: number // средняя оценка карточек
+    shots: number // количество попыток
+    rating: number // лайки
+    type: string // ещё будет "folder" (папка)
+    created: string
+    updated: string
+    __v: number
+}
+
+export type cardPacksType = cardType[]
+
+export type PacksResponseType = {
+    cardPacks: cardPacksType
+    cardPacksTotalCount: number // количество колод
+    maxCardsCount: number
+    minCardsCount: number
+    page: number // выбранная страница
+    pageCount: number// количество элементов на странице
+}
