@@ -2,7 +2,9 @@ import React, {useState} from 'react'
 import {useSortableData} from "../hooks/useSortableData";
 import {cardPacksType} from "../common/types/types";
 import {useDispatch} from "react-redux";
-import {Modal} from "../cards/addPackModal/Modal";
+import {Modal} from "../common/Modal/Modal";
+import {AddPacksModal} from "../packs/addPacksModal/AddPacksModal";
+
 
 type TableProps = {
     items: cardPacksType
@@ -10,17 +12,9 @@ type TableProps = {
 
 
 export const Table: React.FC<TableProps> = (props) => {
-
+    //хук для сортировки items
     const {items, requestSort} = useSortableData(props.items);
-    const dispatch = useDispatch()
-    //const {items, requestSort, sortConfig} = useSortableData(props.items);
-    /*const getClassNamesFor = (name: string) => {
-        if (!sortConfig) {
-            return;
-        }
-        return sortConfig.key === name ? sortConfig.direction : undefined;
-    };*/
-
+    //открыть-закрыть модальное окно для добавления колоды
     const [isModal, setModal] = useState(false)
 
     let onClose = () => setModal(false)
@@ -52,7 +46,7 @@ export const Table: React.FC<TableProps> = (props) => {
 
                     <Modal visible={isModal}
                            title={'add pack'}
-                           content={<div>content</div>}
+                           content={<AddPacksModal onClose={onClose}/>}
                            footer={<button onClick={onClose}>close</button>}
                            onClose={onClose}
                     />

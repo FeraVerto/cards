@@ -50,3 +50,9 @@ export type PacksResponseType = {
     page: number // выбранная страница
     pageCount: number// количество элементов на странице
 }
+
+export type PackResponseType = {
+    newCardsPack: cardType
+    token: string
+    tokenDeathTime: number
+}
