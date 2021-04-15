@@ -40,9 +40,6 @@ export const getPacks = (): ThunkType => async (dispatch: Dispatch<ActionType>) 
     try {
         let data = await packsAPI.getPacks()
         let packs = data.cardPacks
-        //удалить
-        console.log("getPacks",packs)
-        //удалить
         dispatch(getPacksAC(packs))
         dispatch(loadingAC(false))
     } catch (e) {
@@ -50,4 +47,9 @@ export const getPacks = (): ThunkType => async (dispatch: Dispatch<ActionType>) 
         dispatch(loadingAC(false))
     }
 }
+
+export const addPack = () => (dispatch: Dispatch<ActionType>) => {
+
+}
+
 

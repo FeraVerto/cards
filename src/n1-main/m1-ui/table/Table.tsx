@@ -1,6 +1,8 @@
-import {cardPacksType} from "../common/types/types";
-import React from 'react'
+import React, {useState} from 'react'
 import {useSortableData} from "../hooks/useSortableData";
+import {cardPacksType} from "../common/types/types";
+import {useDispatch} from "react-redux";
+import {Modal} from "../cards/addPackModal/Modal";
 
 type TableProps = {
     items: cardPacksType
@@ -10,6 +12,7 @@ type TableProps = {
 export const Table: React.FC<TableProps> = (props) => {
 
     const {items, requestSort} = useSortableData(props.items);
+    const dispatch = useDispatch()
     //const {items, requestSort, sortConfig} = useSortableData(props.items);
     /*const getClassNamesFor = (name: string) => {
         if (!sortConfig) {
@@ -18,25 +21,42 @@ export const Table: React.FC<TableProps> = (props) => {
         return sortConfig.key === name ? sortConfig.direction : undefined;
     };*/
 
+    const [isModal, setModal] = useState(false)
+
+    let onClose = () => setModal(false)
+
     return (
         <table>
             <caption>Packs</caption>
             <thead>
             <tr>
                 <th>
-                    <button type="button" onClick={() => requestSort('name')}>
+                    <div onClick={() => requestSort('name')}>
                         name
-                    </button>
+                    </div>
                 </th>
                 <th>
-                    <button type="button" onClick={() => requestSort('cardsCount')}>
+                    <div onClick={() => requestSort('cardsCount')}>
                         cardsCount
-                    </button>
+                    </div>
                 </th>
                 <th>
-                    <button type="button" onClick={() => requestSort('updated')}>
+                    <div onClick={() => requestSort('updated')}>
                         updated
+                    </div>
+                </th>
+                <th>
+                    <button onClick={() => setModal(true)}>
+                        Add
                     </button>
+
+                    <Modal visible={isModal}
+                           title={'add pack'}
+                           content={<div>content</div>}
+                           footer={<button onClick={onClose}>close</button>}
+                           onClose={onClose}
+                    />
+
                 </th>
             </tr>
             </thead>

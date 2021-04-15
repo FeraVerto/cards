@@ -1,7 +1,6 @@
-import {cardPacksType} from "../common/types/types";
-import {useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 
-export const useSortableData = (items: cardPacksType, config = null) => {
+export const useSortableData = (items: any, config = null) => {
 
     //состояние объекта с ключем и направлением сортировки
     const [sortConfig, setSortConfig] = useState<{
