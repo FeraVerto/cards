@@ -45,8 +45,6 @@ export const Table: React.FC<TableProps> = (props) => {
                             Updated
                         </div>
                     </th>
-                    <th className={s.table_title}>Blablabla
-                    </th>
                 </tr>
                 </thead>
 
@@ -58,10 +56,6 @@ export const Table: React.FC<TableProps> = (props) => {
                                 <td>{i.name}</td>
                                 <td>{i.cardsCount}</td>
                                 <td>{i.updated}</td>
-                                <td>
-                                    <button>delete</button>
-                                    <button>update</button>
-                                </td>
                             </tr>
                         )
                     })
@@ -69,9 +63,13 @@ export const Table: React.FC<TableProps> = (props) => {
                 </tbody>
             </table>
 
-            <Button className={s.button} onClick={() => setModal(true)}>
-                add
-            </Button>
+            <div className={s.button_group}>
+                <Button className={s.button} onClick={() => setModal(true)}>
+                    add
+                </Button>
+                <Button>delete</Button>
+                <Button>update</Button>
+            </div>
 
             <Modal visible={isModal}
                    title={'add pack'}

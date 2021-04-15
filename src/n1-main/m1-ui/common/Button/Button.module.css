@@ -1,11 +1,11 @@
 .default,
 .red {
     font-family: inherit;
-    width: 55px;
     font-size: 30px;
     border: none;
     padding-left: -10px;
     background-color: #00a0a0;
+    text-transform: uppercase;
 /*    margin: 10px 20px;
     padding: 15px 30px;
 

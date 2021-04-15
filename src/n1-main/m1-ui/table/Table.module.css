@@ -28,5 +28,8 @@ th {
     color: #ffd700;
 }
 
-td {
+.button_group {
+    display: flex;
+    justify-content: space-between;
+    max-width: 330px;
 }

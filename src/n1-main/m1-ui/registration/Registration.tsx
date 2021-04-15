@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../m2-bll/store";
 import {Redirect} from "react-router-dom";
 import s from "./Registration.module.css"
+import Input from "../common/Input/Input";
+import Button from "../common/Button/Button";
 
 type ErrorType = {
     email?: string
@@ -44,7 +46,7 @@ export const Registration = () => {
                 errors.password = 'Password should be more 7 symbols';
             }
 
-            if(values.password !== values.confirmPassword && values.confirmPassword !== "") {
+            if (values.password !== values.confirmPassword && values.confirmPassword !== "") {
                 errors.password = 'Passwords do not match'
             }
 
@@ -58,12 +60,14 @@ export const Registration = () => {
 
     return (
         <div className={s.registration}>
-            <h1 className={s.h1}>Форма регистрации</h1>
+            <h1 className={s.h1}>Registration form</h1>
             <form className={s.form} onSubmit={formik.handleSubmit}>
 
                 <div className={s.form_item}>
-                    <input type="text"
-                           placeholder="Введите логин"
+                    <label htmlFor="email">Enter your email address</label>
+
+                    <Input id='email'
+                           type="text"
                            {...formik.getFieldProps('email')}
                     />
                     {formik.touched.email && formik.errors.email ?
@@ -71,8 +75,10 @@ export const Registration = () => {
                 </div>
 
                 <div className={s.form_item}>
-                    <input type="password"
-                           placeholder="Введите пароль"
+                    <label htmlFor="email">Enter your password</label>
+
+                    <Input id='password'
+                           type="password"
                            {...formik.getFieldProps('password')}
                     />
 
@@ -81,8 +87,10 @@ export const Registration = () => {
                 </div>
 
                 <div className={s.form_item}>
-                    <input type="password"
-                           placeholder="Введите пароль еще раз"
+                    <label htmlFor="repeat">Repeat password</label>
+
+                    <Input id='repeat'
+                           type="password"
                            {...formik.getFieldProps('confirmPassword')}
                     />
 
@@ -90,7 +98,7 @@ export const Registration = () => {
                         <div className={s.error}>{formik.errors.confirmPassword}</div> : null}
                 </div>
 
-                <button className={s.button} type='submit' disabled={isLoading}>Зарегистрироваться</button>
+                <Button className={s.button} type='submit' disabled={isLoading}>Sign up</Button>
 
             </form>
 

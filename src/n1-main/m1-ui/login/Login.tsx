@@ -2,10 +2,11 @@ import {useFormik} from "formik";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
-import s from './../registration/Registration.module.css'
-import m from './login.module.css'
+import s from './login.module.css'
 import {AppStateType} from "../../m2-bll/store";
 import {LoginStateType, loginTC} from "../../m2-bll/login-reducer";
+import Button from "../common/Button/Button";
+import Input from "../common/Input/Input";
 
 const Login = () => {
 
@@ -39,7 +40,7 @@ const Login = () => {
         <form className={s.form} onSubmit={formik.handleSubmit}>
             <div className={s.form_item}>
                 <label htmlFor="email">Email Address</label>
-                <input
+                <Input
                     id="email"
                     name="email"
                     type="email"
@@ -51,18 +52,18 @@ const Login = () => {
 
             <div className={s.form_item}>
                 <label htmlFor="password">Password</label>
-                <input type={'text'} name={'password'} id={'password'}
+                <Input type={'password'} name={'password'} id={'password'}
                        value={formik.values.password}
                        onChange={formik.handleChange}/>
             </div>
 
-            <div className={`${s.form_item} ${m.form_item_rememberMe}`}>
+            <div className={`${s.form_item} ${s.form_item_rememberMe}`}>
                 <label htmlFor="rememberMe">Remember me</label>
                 <input type="checkbox" name="rememberMe"
                        value="rememberMe" onChange={formik.handleChange}/>
             </div>
 
-            <button className={s.button} type="submit" disabled={fetch}>Submit</button>
+            <Button className={s.button} type="submit" disabled={fetch}>Submit</Button>
         </form>
 
         {fetch && <div className={s.loading}>Loading...</div>}
