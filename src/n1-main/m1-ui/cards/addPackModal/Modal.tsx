@@ -35,17 +35,17 @@ export const Modal: React.FC<ModalType> = ({
 
     return (
         <div className={s.modal} onClick={onClose}>
-            <div className='modal-dialog' onClick={e => e.stopPropagation()}>
-                <div className='modal-header'>
-                    <h3 className='modal-title'>{title}</h3>
-                    <span className='modal-close' onClick={onClose}>
+            <div className={s.modal_dialog} onClick={e => e.stopPropagation()}>
+                <div className={s.modal_header}>
+                    <h3 className={s.modal_title}>{title}</h3>
+                    <span className={s.modal_close} onClick={onClose}>
             &times;
           </span>
                 </div>
-                <div className='modal-body'>
-                    <div className='modal-content'>{content}</div>
+                <div className={s.modal_body}>
+                    <div className={s.modal_content}>{content}</div>
                 </div>
-                {footer && <div className='modal-footer'>{footer}</div>}
+                {footer && <div className={s.modal_footer}>{footer}</div>}
             </div>
         </div>
     )
