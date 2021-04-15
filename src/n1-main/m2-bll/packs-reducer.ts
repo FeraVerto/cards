@@ -38,6 +38,7 @@ export const packsReducer = (state = initialState, action: ActionType) => {
     }
 }
 
+//AC
 const getPacksAC = (data: cardPacksType) => ({
     type: ACTIONS_TYPE.GET_PACKS,
     payload: {data}
@@ -48,6 +49,7 @@ const addPackAC = (pack: cardType) => ({
     payload: {pack}
 } as const)
 
+//THUNK
 export const getPacks = (): ThunkType => async (dispatch: Dispatch<ActionType>) => {
     dispatch(loadingAC(true))
     try {
@@ -61,6 +63,7 @@ export const getPacks = (): ThunkType => async (dispatch: Dispatch<ActionType>) 
     }
 }
 
+//THUNK
 export const addPack = (name: string) => async (dispatch: Dispatch<ActionType>) => {
     console.log("name pack thunk", name)
     dispatch(loadingAC(true))

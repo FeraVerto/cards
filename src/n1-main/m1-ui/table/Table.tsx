@@ -12,17 +12,9 @@ type TableProps = {
 
 
 export const Table: React.FC<TableProps> = (props) => {
-
+    //хук для сортировки items
     const {items, requestSort} = useSortableData(props.items);
-    const dispatch = useDispatch()
-    //const {items, requestSort, sortConfig} = useSortableData(props.items);
-    /*const getClassNamesFor = (name: string) => {
-        if (!sortConfig) {
-            return;
-        }
-        return sortConfig.key === name ? sortConfig.direction : undefined;
-    };*/
-
+    //открыть-закрыть модальное окно для добавления колоды
     const [isModal, setModal] = useState(false)
 
     let onClose = () => setModal(false)

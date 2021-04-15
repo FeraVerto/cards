@@ -55,7 +55,6 @@ export const packsAPI = {
     addPack(name?: string, path?: string,
             grade?: number, shots?: number,
             rating?: number, deckCover?: string, type?: string) {
-        console.log("addPackAPI", name)
         return instance.post<PackResponseType>(`/cards/pack`, {cardsPack: {name}}).then(response => response.data)
     }
 }

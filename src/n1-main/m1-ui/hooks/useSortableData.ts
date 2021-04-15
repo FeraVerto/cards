@@ -12,7 +12,6 @@ export const useSortableData = (items: any, config = null) => {
     //не мутирует items
     //результат закеширован
     const sortedItems = useMemo(() => {
-        console.log("useSortableData",items)
         let sortableItems = [...items];
         if (sortConfig !== null) {
             sortableItems.sort((a: any, b: any) => {

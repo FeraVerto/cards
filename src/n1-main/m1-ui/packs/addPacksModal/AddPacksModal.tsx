@@ -18,20 +18,7 @@ export const AddPacksModal: React.FC<AddPacksModal> = ({onClose}) => {
 
         onSubmit: (values) => {
             dispatch(addPack(values.name))
-            console.log("name pack formik",values.name)
             onClose()
-            //formik.resetForm()
-        },
-
-        validate: (values) => {
-            /*
-            const errors: ErrorType = {};
-            if (!values.email) {
-                errors.email = 'Required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-            }
-            return errors;*/
         }
     })
 

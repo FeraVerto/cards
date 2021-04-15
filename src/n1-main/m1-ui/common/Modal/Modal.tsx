@@ -17,7 +17,6 @@ export const Modal: React.FC<ModalType> = ({
                                                onClose,
                                            }) => {
 
-    //обработчик события на клавишу Esc
     const onKeydown = ({key}: KeyboardEvent) => {
         switch (key) {
             case 'Escape':
