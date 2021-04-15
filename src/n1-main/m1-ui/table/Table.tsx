@@ -4,6 +4,7 @@ import {cardPacksType} from "../common/types/types";
 import {Modal} from "../common/Modal/Modal";
 import {AddPacksModal} from "../packs/addPacksModal/AddPacksModal";
 import s from "./Table.module.css"
+import Button from "../common/Button/Button";
 
 
 type TableProps = {
@@ -68,9 +69,9 @@ export const Table: React.FC<TableProps> = (props) => {
                 </tbody>
             </table>
 
-            <button className={s.button} onClick={() => setModal(true)}>
-                +
-            </button>
+            <Button className={s.button} onClick={() => setModal(true)}>
+                add
+            </Button>
 
             <Modal visible={isModal}
                    title={'add pack'}
