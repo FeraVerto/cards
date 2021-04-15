@@ -36,6 +36,7 @@ const Login = () => {
 
     return <div>
         <h1 className={s.h1}>Login</h1>
+        {errorMessage && <div className={s.error}>{errorMessage}</div>}
 
         <form className={s.form} onSubmit={formik.handleSubmit}>
             <div className={s.form_item}>
@@ -67,7 +68,7 @@ const Login = () => {
         </form>
 
         {fetch && <div className={s.loading}>Loading...</div>}
-        {errorMessage && <div className={s.error}>{errorMessage}</div>}
+
 
     </div>
 }
