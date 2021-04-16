@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/cards/static/css/main.14ced6b9.chunk.css",
-    "main.js": "/cards/static/js/main.8b30b9e9.chunk.js",
-    "main.js.map": "/cards/static/js/main.8b30b9e9.chunk.js.map",
+    "main.css": "/cards/static/css/main.87a045d9.chunk.css",
+    "main.js": "/cards/static/js/main.cd758fc4.chunk.js",
+    "main.js.map": "/cards/static/js/main.cd758fc4.chunk.js.map",
     "runtime-main.js": "/cards/static/js/runtime-main.24b567b9.js",
     "runtime-main.js.map": "/cards/static/js/runtime-main.24b567b9.js.map",
     "static/js/2.caca0e6c.chunk.js": "/cards/static/js/2.caca0e6c.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.91de98a8.chunk.js": "/cards/static/js/3.91de98a8.chunk.js",
     "static/js/3.91de98a8.chunk.js.map": "/cards/static/js/3.91de98a8.chunk.js.map",
     "index.html": "/cards/index.html",
-    "static/css/main.14ced6b9.chunk.css.map": "/cards/static/css/main.14ced6b9.chunk.css.map",
+    "static/css/main.87a045d9.chunk.css.map": "/cards/static/css/main.87a045d9.chunk.css.map",
     "static/js/2.caca0e6c.chunk.js.LICENSE.txt": "/cards/static/js/2.caca0e6c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/cards/static/media/Web437_IBM_VGA_8x14.1700fb3a.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.24b567b9.js",
     "static/js/2.caca0e6c.chunk.js",
-    "static/css/main.14ced6b9.chunk.css",
-    "static/js/main.8b30b9e9.chunk.js"
+    "static/css/main.87a045d9.chunk.css",
+    "static/js/main.cd758fc4.chunk.js"
   ]
 }
