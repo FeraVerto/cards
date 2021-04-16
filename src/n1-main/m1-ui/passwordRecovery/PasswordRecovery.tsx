@@ -3,6 +3,8 @@ import s from "./LostPassword.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../m2-bll/store";
 import {postEmailTC, setResponseError} from "../../m2-bll/enter-new-password-reducer";
+import Input from "../common/Input/Input";
+import Button from "../common/Button/Button";
 
 export const PasswordRecovery = () => {
 
@@ -24,11 +26,11 @@ export const PasswordRecovery = () => {
     return <div>
         {redirect ? <h3 className={s.message}>We have sent you a message with a link to change your password to this address:{email}</h3> :
             <div className={s.main}>
-                <h1>Укажите email или телефон</h1>
-                <h3>Пожалуйста, укажите email или телефон, который вы использовали для входа на сайт</h3>
-                <input onChange={onInputChange} placeholder={"Enter Email"}/>
+                <h1>Enter your email or phone number</h1>
+                <h3>Please enter the email or phone number you used to login</h3>
+                <Input onChange={onInputChange} placeholder={"Enter Email"}/>
                 {error ? <div className={s.error}>{error}</div> : null}
-                <button onClick={postEmail}>Next</button>
+                <Button onClick={postEmail}>Next</Button>
             </div>
         }
     </div>

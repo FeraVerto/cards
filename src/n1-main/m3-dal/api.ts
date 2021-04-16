@@ -2,8 +2,8 @@ import axios from "axios";
 import {LoginResponseType, LogoutResponseType, PackResponseType, PacksResponseType} from "../m1-ui/common/types/types";
 
 const instance = axios.create({
-    baseURL: 'https://neko-back.herokuapp.com/2.0',
-    //baseURL: 'http://localhost:7542/2.0/',
+    //baseURL: 'https://neko-back.herokuapp.com/2.0',
+    baseURL: 'http://localhost:7542/2.0/',
     withCredentials: true
 })
 

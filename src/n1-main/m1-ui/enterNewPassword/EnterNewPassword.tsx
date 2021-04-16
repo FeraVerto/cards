@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux"
 import {AppStateType} from "../../m2-bll/store"
 import {postNewPasswordTC} from "../../m2-bll/enter-new-password-reducer"
 import s from './NewPassword.module.css'
+import Input from "../common/Input/Input";
+import Button from "../common/Button/Button";
 
 
 export const EnterNewPassword = () => {
@@ -37,13 +39,13 @@ export const EnterNewPassword = () => {
     }
 
     return <div className={s.main}>
-        <h1>Введите новый пароль</h1>
+        <h1>Enter a new password</h1>
         <div className={s.inputs}>
-            <input onChange={changePassword1} type="password" placeholder={"Enter new password"}/>
-            <input onChange={changePassword2} type="password" placeholder={"Repeat new password"}/>
+            <Input onChange={changePassword1} type="password" placeholder={"Enter new password"}/>
+            <Input onChange={changePassword2} type="password" placeholder={"Repeat new password"}/>
             {badPassword ? <div>Passwords mismatch!</div> : null}
             {error ? <div className={s.error}>{error}</div> : null}
         </div>
-        <button onClick={changePassword}>Next</button>
+        <Button onClick={changePassword}>Next</Button>
     </div>
 }
