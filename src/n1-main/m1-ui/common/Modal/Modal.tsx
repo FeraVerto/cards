@@ -1,11 +1,11 @@
 import React, {ReactElement, useEffect} from 'react'
 import s from "./Modal.module.css"
+import Button from "../Button/Button";
 
 type ModalType = {
     visible: boolean,
     title: string,
     content: ReactElement | string,
-    footer: ReactElement | string,
     onClose: () => void
 }
 
@@ -13,7 +13,6 @@ export const Modal: React.FC<ModalType> = ({
                                                visible = false,
                                                title = '',
                                                content = '',
-                                               footer = '',
                                                onClose,
                                            }) => {
 
@@ -35,16 +34,17 @@ export const Modal: React.FC<ModalType> = ({
     return (
         <div className={s.modal} onClick={onClose}>
             <div className={s.modal_dialog} onClick={e => e.stopPropagation()}>
-                <div className={s.modal_header}>
-                    <h3 className={s.modal_title}>{title}</h3>
-                    <span className={s.modal_close} onClick={onClose}>
-            &times;
-          </span>
-                </div>
-                <div className={s.modal_body}>
-                    <div className={s.modal_content}>{content}</div>
-                </div>
-                {footer && <div className={s.modal_footer}>{footer}</div>}
+                <fieldset>
+                    <legend>{title}</legend>
+                    <div className={s.modal_body}>
+                        <div className={s.modal_button}>
+                            <div>
+                                <div className={s.modal_content}>{content}</div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
             </div>
         </div>
     )

@@ -1,0 +1,83 @@
+.default,
+.red {
+    font-family: inherit;
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+    text-transform: uppercase;
+/*    margin: 10px 20px;
+    padding: 15px 30px;
+
+    width: 150px;
+
+    display: inline-block;
+
+    overflow: hidden;
+    border: 2px solid;
+    border-bottom-width: 4px;
+    outline: none;
+
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgb(70, 240, 92);
+
+    background: rgba(0, 0, 0, 1);
+    transition: color .3s, background .5s;*/
+}
+
+.default::before {
+    content: "[";
+}
+
+.default::after {
+    content: "]";
+}
+
+
+
+/*.default:hover,
+.red:hover {
+    animation: stripes .75s infinite linear;
+    background: linear-gradient(45deg,
+    rgb(70, 240, 92) 25%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 1) 50%,
+    rgb(70, 240, 92) 50%,
+    rgb(70, 240, 92) 75%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 1));
+    background-size: 10px 10px;
+    color: white;
+    font-size: 15px;
+    box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #00ff00,0 0 90px #00ff00;
+}*/
+
+/*@keyframes stripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 30px 0;
+    }
+}*/
+
+/*.red {
+    color: #FF50E5;
+    background: rgba(255, 255, 255, 1);
+}
+
+.red:hover {
+    animation: stripes .75s infinite linear;
+    background: linear-gradient(45deg, rgb(234, 187, 187) 25%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(234, 187, 187, 1) 50%,
+    rgba(234, 187, 187, 1) 75%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(255, 255, 255, 1));
+    background-size: 10px 10px;
+    color: rgba(243, 63, 94, 1);
+}*/

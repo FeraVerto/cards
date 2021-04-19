@@ -1,6 +1,6 @@
-input {
-    background-color: black;
-    border: 4px solid #96daff;
+.input {
+    background-color: transparent;
+    border: 3px solid #96daff;
 
     padding: 10px;
 
@@ -12,6 +12,11 @@ input {
     color: #96daff;
 }
 
+input::placeholder{
+    font-family: IBMVGA8 ,monospace;
+}
+
 label {
     font-size: 20px;
 }
+

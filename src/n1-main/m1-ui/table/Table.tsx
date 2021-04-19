@@ -35,6 +35,8 @@ export const Table: React.FC<TableProps> = (props) => {
         props.deletePack(id)
     }
 
+    console.log("Modal")
+
     return (
 
         <div>
@@ -95,7 +97,6 @@ export const Table: React.FC<TableProps> = (props) => {
                                            title={'update pack'}
                                            content={<UpdatePacksModal onClose={onCloseUpdate} id={i._id} name={i.name}
                                                                       cardsCount={i.cardsCount}/>}
-                                           footer={<Button onClick={onCloseUpdate}>close</Button>}
                                            onClose={onCloseUpdate}
                                     />
 
@@ -115,8 +116,7 @@ export const Table: React.FC<TableProps> = (props) => {
 
             <Modal visible={isModalAdd}
                    title={'add pack'}
-                   content={<AddPacksModal onClose={onCloseUpdate}/>}
-                   footer={<Button onClick={onCloseUpdate}>close</Button>}
+                   content={<AddPacksModal onClose={onCloseAdd}/>}
                    onClose={onCloseAdd}
             />
 

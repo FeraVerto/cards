@@ -1,11 +1,11 @@
 import {useFormik} from 'formik'
-import React, {useState} from 'react'
-import {useDispatch, useSelector} from "react-redux";
-import {addPackTC, updatePackTC} from "../../../m2-bll/packs-reducer";
-import {AppStateType} from "../../../m2-bll/store";
-import {cardPacksType} from "../../common/types/types";
+import React from 'react'
+import {useDispatch} from "react-redux";
+import {updatePackTC} from "../../../m2-bll/packs-reducer";
 import Input from "../../common/Input/Input";
 import Button from "../../common/Button/Button";
+import s from './updatePacksModal.module.css';
+import ButtonModal from '../../common/ButtonModal/ButtonModal';
 
 type UpdatePacksModal = {
     onClose: () => void
@@ -33,15 +33,18 @@ export const UpdatePacksModal: React.FC<UpdatePacksModal> = ({onClose, name, car
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <Input type="text"
+            <input type="text"
                    placeholder="Enter pack's name"
                    {...formik.getFieldProps('name')}/>
 
-            <Input type="number"
+            <input type="number"
                    placeholder="Enter cards count"
                    {...formik.getFieldProps('cardsCount')}/>
+            <div className={s.button_modal}>
+                <ButtonModal type='submit'>update</ButtonModal>
+                <ButtonModal onClick={onClose}>cancel</ButtonModal>
+            </div>
 
-            <Button type='submit'>update</Button>
         </form>
     )
 }
