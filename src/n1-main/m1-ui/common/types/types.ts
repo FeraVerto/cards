@@ -56,3 +56,55 @@ export type PackResponseType = {
     token: string
     tokenDeathTime: number
 }
+
+export type updatedCardsPackType = {
+    cardsCount: number
+    created: string
+    deckCover: null | ""
+    grade: number
+    more_id: string
+    name: string
+    path: string
+    private: boolean
+    rating: number
+    shots: number
+    type: string
+    updated: string
+    user_id: string
+    user_name: string
+    __v: number
+    _id: string
+}
+
+export type updatedCardsPackResponseType = {
+    token: string
+    tokenDeathTime: number
+    updatedCardsPack: updatedCardsPackType
+}
+
+export type cardItemType = {
+    answer: string
+    question: string
+    cardsPack_id: string
+    grade: number
+    rating: number
+    shots: number
+    type: string
+    user_id: string
+    created: string
+    updated: string
+    __v: number
+    _id: string
+}
+
+export type cardsType = Array<cardItemType>
+
+export type cardsResponseType = {
+    cards: cardsType
+    cardsTotalCount: number
+    maxGrade: number
+    minGrade: number
+    page: number
+    pageCount: number
+    packUserId: string
+}

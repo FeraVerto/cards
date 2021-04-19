@@ -1,5 +1,12 @@
 import axios from "axios";
-import {LoginResponseType, LogoutResponseType, PackResponseType, PacksResponseType} from "../m1-ui/common/types/types";
+import {
+    cardsResponseType,
+    LoginResponseType,
+    LogoutResponseType,
+    PackResponseType,
+    PacksResponseType,
+    updatedCardsPackResponseType
+} from "../m1-ui/common/types/types";
 
 const instance = axios.create({
     //baseURL: 'https://neko-back.herokuapp.com/2.0',
@@ -39,8 +46,9 @@ export const lostPasswordAPI = {
     postEmail(email: string) {
         return instance.post(`auth/forgot`, {
             email,
-            from: "cards-admin <themightymasha@gmail.com>",
+            from: "cards-admin <poterjannaja@bk.com>",
             message: `<div style="background-color: lime; padding: 15px"> password recovery link: <a href='https://feraverto.github.io/cards/#/enter-new-password/$token$'>link</a></div>`
+            //message: `<div style="background-color: lime; padding: 15px"> password recovery link: <a href='http://localhost:3001/cards/#/enter-new-password/$token$'>link</a></div>`
         }).then(response => response.data)
     }
 }
@@ -54,5 +62,34 @@ export const packsAPI = {
             grade?: number, shots?: number,
             rating?: number, deckCover?: string, type?: string) {
         return instance.post<PackResponseType>(`/cards/pack`, {cardsPack: {name}}).then(response => response.data)
+    },
+
+    deletePack(id: string) {
+        return instance.delete(`/cards/pack?id=${id}`)
+    },
+
+    updatePack(id: string, name?: string, cardsCount?: number) {
+        return instance.put<updatedCardsPackResponseType>(`/cards/pack`, {cardsPack:{_id: id, name: name, cardsCount: cardsCount}}).then(response => response.data.updatedCardsPack)
     }
 }
+
+export const cardsAPI = {
+    getCards(id: string) {
+        return instance.get<cardsResponseType>(`/cards/card&cardsPack_id=${id}`).then(response => response.data)
+    }/*,
+
+    addPack(name?: string, path?: string,
+            grade?: number, shots?: number,
+            rating?: number, deckCover?: string, type?: string) {
+        return instance.post<PackResponseType>(`/cards/card`, {cardsPack: {name}}).then(response => response.data)
+    },
+
+    deletePack(id: string) {
+        return instance.delete(`/cards/pack?id=${id}`)
+    },
+
+    updatePack(id: string, name?: string, cardsCount?: number) {
+        return instance.put<updatedCardsPackResponseType>(`/cards/pack`, {cardsPack:{_id: id, name: name, cardsCount: cardsCount}}).then(response => response.data.updatedCardsPack)
+    }*/
+}
+

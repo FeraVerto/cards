@@ -18,6 +18,15 @@
     color: #ffd700;
 }
 
+.table_item_button {
+    display: flex;
+    justify-content: center;
+}
+
+.table_item_button button {
+    margin-right: 10px;
+}
+
 th, td {
     border-left: 5px double #96daff;
     border-right: 5px double #96daff;

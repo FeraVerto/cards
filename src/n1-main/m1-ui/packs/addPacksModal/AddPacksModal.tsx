@@ -1,7 +1,9 @@
 import {useFormik} from 'formik'
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
-import {addPack} from "../../../m2-bll/packs-reducer";
+import {addPackTC} from "../../../m2-bll/packs-reducer";
+import Input from "../../common/Input/Input";
+import Button from "../../common/Button/Button";
 
 type AddPacksModal = {
     onClose: () => void
@@ -17,17 +19,17 @@ export const AddPacksModal: React.FC<AddPacksModal> = ({onClose}) => {
         },
 
         onSubmit: (values) => {
-            dispatch(addPack(values.name))
+            dispatch(addPackTC(values.name))
             onClose()
         }
     })
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <input type="text"
+            <Input type="text"
                    placeholder="Введите название колоды"
                    {...formik.getFieldProps('name')}/>
-            <button type='submit'>add</button>
+            <Button type='submit'>add</Button>
         </form>
     )
 }

@@ -5,7 +5,7 @@ import {loginAPI} from "../m3-dal/api";
 
 export type LoginStateType = {
     isAuth: boolean
-    errorMessage: string
+    errorMessage: string | null
     data: LoginResponseType
 }
 
@@ -53,7 +53,7 @@ const successLoginAC = (data: LoginResponseType, isAuth: boolean, errorMessage: 
     } as const
 )
 
-const failedLoginAC = (errorMessage: string, isAuth: boolean) => (
+const failedLoginAC = (errorMessage: string | null, isAuth: boolean) => (
     {
         type: 'FAILED-LOGIN',
         payload: {

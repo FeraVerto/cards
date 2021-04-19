@@ -15,22 +15,3 @@ input {
 label {
     font-size: 20px;
 }
-
-/*
-.errorInput {
-    padding: 6px 0 4px 10px;
-
-    height: 30px;
-    width: 300px;
-
-    font-size: 13px;
-
-    border: 2px solid #FF50E5;
-    background: black;
-    border-radius: 8px;
-}
-
-.error {
-    color: #FF50E5;
-    font-weight: bold;
-}*/

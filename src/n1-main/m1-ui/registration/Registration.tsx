@@ -29,7 +29,6 @@ export const Registration = () => {
 
         onSubmit: (values) => {
             dispatch(registration(values.email, values.password))
-            //formik.resetForm()
         },
 
         validate: (values) => {
