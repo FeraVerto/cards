@@ -2,8 +2,6 @@ import {useFormik} from 'formik'
 import React from 'react'
 import {useDispatch} from "react-redux";
 import {updatePackTC} from "../../../m2-bll/packs-reducer";
-import Input from "../../common/Input/Input";
-import Button from "../../common/Button/Button";
 import s from './updatePacksModal.module.css';
 import ButtonModal from '../../common/ButtonModal/ButtonModal';
 

@@ -1,6 +1,5 @@
 import React, {ReactElement, useEffect} from 'react'
 import s from "./Modal.module.css"
-import Button from "../Button/Button";
 
 type ModalType = {
     visible: boolean,

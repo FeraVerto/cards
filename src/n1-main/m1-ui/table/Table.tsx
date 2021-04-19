@@ -1,15 +1,11 @@
 import React, {useState} from 'react'
-import {useSortableData} from "../hooks/useSortableData";
 import {cardPacksType} from "../common/types/types";
 import {Modal} from "../common/Modal/Modal";
 import {AddPacksModal} from "../packs/addPacksModal/AddPacksModal";
 import s from "./Table.module.css"
 import Button from "../common/Button/Button";
 import {UpdatePacksModal} from "../packs/updatePacksModal/updatePacksModal";
-import {useSelector} from "react-redux";
-import {AppStateType} from "../../m2-bll/store";
-import {NavLink, Redirect} from 'react-router-dom';
-import Login from "../login/Login";
+import {NavLink} from 'react-router-dom';
 
 
 type TableProps = {
