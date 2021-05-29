@@ -1,12 +1,11 @@
-import React, {useState} from 'react'
-import {cardItemType, cardPacksType, cardsType} from "../common/types/types";
+import React, {FC, useState} from 'react'
 import {Modal} from "../common/Modal/Modal";
 import {AddPacksModal} from "../packs/addPacksModal/AddPacksModal";
 import s from "./Table.module.css"
 import Button from "../common/Button/Button";
 import {UpdatePacksModal} from "../packs/updatePacksModal/updatePacksModal";
-import {NavLink} from 'react-router-dom';
-import {log} from "util";
+import { NavLink } from 'react-router-dom';
+
 
 
 type TableProps<X = {}> = {
@@ -22,11 +21,11 @@ type TableProps<X = {}> = {
 export const Table: React.FC<TableProps> = (props) => {
 
     //открыть-закрыть модальное окно для добавления колоды
-    const [isModalAdd, setModalAdd] = useState(false)
+
     const [isModalUpdate, setModalUpdate] = useState(false)
 
 
-    let onCloseAdd = () => setModalAdd(false)
+
     let onCloseUpdate = () => setModalUpdate(false)
 
     let onClickDelete = (id: string) => {
@@ -34,7 +33,6 @@ export const Table: React.FC<TableProps> = (props) => {
     }
 
     return (
-
         <div>
             <table className={s.table}>
 
@@ -57,7 +55,7 @@ export const Table: React.FC<TableProps> = (props) => {
                 <tbody>
                     {
                         props.items.map((k: any, i: number) => {
-                            console.log("k", k)
+
                             let values: Array<string> = props.f(k)
 
                             return <tr key={i} className={s.table_item}>
@@ -87,6 +85,7 @@ export const Table: React.FC<TableProps> = (props) => {
                                 <div className={s.table_button}>
                                     <Button onClick={() => onClickDelete(k._id)}>D</Button>
                                     <Button onClick={() => setModalUpdate(true)}>U</Button>
+                                    <Button><NavLink to="cards">Cards</NavLink></Button>
                                 </div>
                             </tr>
                         })
@@ -94,18 +93,9 @@ export const Table: React.FC<TableProps> = (props) => {
                 </tbody>
             </table>
 
-            <div className={s.button_group}>
-                <Button className={s.button} onClick={() => setModalAdd(true)}>
-                    add
-                </Button>
-            </div>
 
 
-            <Modal visible={isModalAdd}
-                   title={'add pack'}
-                   content={<AddPacksModal onClose={onCloseAdd}/>}
-                   onClose={onCloseAdd}
-            />
+
 
         </div>
     )

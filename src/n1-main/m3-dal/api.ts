@@ -65,7 +65,6 @@ export const packsAPI = {
     },
 
     deletePack(id: string) {
-        console.log("deletePack", id)
         return instance.delete(`/cards/pack?id=${id}`)
     },
 
@@ -77,7 +76,25 @@ export const packsAPI = {
 export const cardsAPI = {
     getCards(id: string) {
         return instance.get<cardsResponseType>(`/cards/card&cardsPack_id=${id}`).then(response => response.data)
-    }/*,
+    },
+
+    addCard(cardsPack_id: string,
+        question?: string,
+        answer?: string,
+        grade?: number,
+        shots?: number,
+        rating?: number,
+        answerImg?: string,
+        questionImg?: string,
+        questionVideo?: string,
+        answerVideo?: string,
+        type?: string) {
+        return instance.post(`/cards/card`, {card: cardsPack_id, question, answer})
+    },
+
+    deleteCard(id: string) {
+        return instance.delete(`/cards/card?id=${id}`)
+    },/*,
 
     addPack(name?: string, path?: string,
             grade?: number, shots?: number,

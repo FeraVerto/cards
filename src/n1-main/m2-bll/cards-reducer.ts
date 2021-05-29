@@ -72,5 +72,20 @@ export const getCardsTC = (id: string): ThunkType => async (dispatch: Dispatch<A
     }
 }
 
+export const addCardTC = (cardsPack_id: string, question: string, answer: string) => async (dispatch: Dispatch<ActionType>) => {
+    dispatch(loadingAC(true))
+    try {
+        let data = await cardsAPI.addCard(cardsPack_id, question, answer)
+        /*dispatch(getCardsAC(data.cards))
+        console.log("data.cards", data.cards)*/
+        dispatch(loadingAC(false))
+    } catch (e) {
+        let err = e.response.data.error
+        console.log(err)
+        //dispatch(errorPackAC(err))
+        dispatch(loadingAC(false))
+    }
+}
+
 
 
