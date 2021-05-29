@@ -1,16 +1,18 @@
 import React, {useState} from 'react'
-import {cardPacksType} from "../common/types/types";
+import {cardItemType, cardPacksType, cardsType} from "../common/types/types";
 import {Modal} from "../common/Modal/Modal";
 import {AddPacksModal} from "../packs/addPacksModal/AddPacksModal";
 import s from "./Table.module.css"
 import Button from "../common/Button/Button";
 import {UpdatePacksModal} from "../packs/updatePacksModal/updatePacksModal";
 import {NavLink} from 'react-router-dom';
+import {log} from "util";
 
 
-type TableProps = {
-    items: cardPacksType
+type TableProps<X = {}> = {
+    items: any
     deletePack: (id: string) => void
+    f: (items: any) => Array<string>
     caption: string
     title: string[]
     requestSort: (key: string) => void
@@ -31,8 +33,6 @@ export const Table: React.FC<TableProps> = (props) => {
         props.deletePack(id)
     }
 
-    console.log("Modal")
-
     return (
 
         <div>
@@ -43,7 +43,6 @@ export const Table: React.FC<TableProps> = (props) => {
                 </caption>
 
                 <thead className={s.table_thead}>
-
                 <tr className={s.table_title_row}>
                     {props.title.map(t => {
                         return <th className={s.table_title}>
@@ -56,51 +55,42 @@ export const Table: React.FC<TableProps> = (props) => {
                 </thead>
 
                 <tbody>
-                {
-                    props.items.map(i => {
-                        return (
-                           /* <tr key={i._id} className={s.table_item}>
-                                <NavLink to={'/cards'}>
-                                    <td>{i.name}</td>
-                                </NavLink>
-                                <td>{i.cardsCount}</td>
-                                <td>{i.updated}</td>
-                                <div className={s.table_item_button}>
-                                    <Button onClick={() => onClickDelete(i._id)}>D</Button>
+                    {
+                        props.items.map((k: any, i: number) => {
+                            console.log("k", k)
+                            let values: Array<string> = props.f(k)
+
+                            return <tr key={i} className={s.table_item}>
+
+                                {
+                                    values.map((p: any) => {
+                                        return <>
+                                            <td>
+                                                {p}
+
+                                                <div className={s.table_item_button}>
+
+                                                    <Modal visible={isModalUpdate}
+                                                           title={'update pack'}
+                                                           content={<UpdatePacksModal onClose={onCloseUpdate} id={""}
+                                                                                      name={"p.name"}
+                                                                                      cardsCount={4}/>}
+                                                           onClose={onCloseUpdate}
+                                                    />
+
+                                                </div>
+                                            </td>
+
+                                        </>
+                                    })
+                                }
+                                <div className={s.table_button}>
+                                    <Button onClick={() => onClickDelete(k._id)}>D</Button>
                                     <Button onClick={() => setModalUpdate(true)}>U</Button>
-
-                                    <Modal visible={isModalUpdate}
-                                           title={'update pack'}
-                                           content={<UpdatePacksModal onClose={onCloseUpdate} id={i._id} name={i.name}
-                                                                      cardsCount={i.cardsCount}/>}
-                                           footer={<Button onClick={onCloseUpdate}>close</Button>}
-                                           onClose={onCloseUpdate}
-                                    />
-
-                                </div>
-                            </tr>*/
-                            <tr key={i._id} className={s.table_item}>
-                                <NavLink to={'/cards'}>
-                                    <td>{i.name}</td>
-                                </NavLink>
-                                <td>{i.cardsCount}</td>
-                                <td>{i.updated}</td>
-                                <div className={s.table_item_button}>
-                                    <Button onClick={() => onClickDelete(i._id)}>D</Button>
-                                    <Button onClick={() => setModalUpdate(true)}>U</Button>
-
-                                    <Modal visible={isModalUpdate}
-                                           title={'update pack'}
-                                           content={<UpdatePacksModal onClose={onCloseUpdate} id={i._id} name={i.name}
-                                                                      cardsCount={i.cardsCount}/>}
-                                           onClose={onCloseUpdate}
-                                    />
-
                                 </div>
                             </tr>
-                        )
-                    })
-                }
+                        })
+                    }
                 </tbody>
             </table>
 
@@ -109,6 +99,7 @@ export const Table: React.FC<TableProps> = (props) => {
                     add
                 </Button>
             </div>
+
 
             <Modal visible={isModalAdd}
                    title={'add pack'}

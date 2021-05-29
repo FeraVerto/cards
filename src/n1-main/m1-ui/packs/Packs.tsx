@@ -1,13 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import {AppStateType} from "../../m2-bll/store"
 import {useEffect} from "react"
 import {deletePackTC, getPacksTC} from "../../m2-bll/packs-reducer"
 import {Table} from "../table/Table"
-import {cardPacksType} from "../common/types/types";
+import {cardPacksType, cardType} from "../common/types/types";
 import s from "./Packs.module.css"
-import {Redirect} from "react-router-dom";
-import {useSortableData} from "../hooks/useSortableData";
+import {useSortableData} from "../common/hooks/useSortableData";
 
 export const Packs = () => {
 
@@ -23,15 +22,17 @@ export const Packs = () => {
     }
 
     const data = useSelector<AppStateType, cardPacksType>(state => state.packs.cardPacks)
-//хук для сортировки items
+    console.log('data',data)
+    //хук для сортировки items
     const {items, requestSort} = useSortableData(data);
-    return (
 
+    return (
         <div className={s.packs}>
             {error !== null && <div>{error}</div>}
             <Table title={["name", "cardsCount", "updated", "actions"]}
                    caption={"Packs"}
                    items={items}
+                   f={(items: any) => [items.name, items.cardsCount, items.updated]}
                    deletePack={deletePack}
                    requestSort={requestSort}
             />

@@ -64,22 +64,12 @@
     margin: -1rem -1rem -1rem auto;
 }
 
-.modal_body {
-    overflow: auto;
-    background-color: #bdbebd;
-}
-
 .modal_content {
     padding: 1rem;
 }
 
 .modal_title {
     margin: 0;
-}
-
-.modal_button {
-    display: flex;
-    flex-direction: column;
 }
 
 fieldset {

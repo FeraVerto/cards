@@ -107,10 +107,10 @@ export const getPacksTC = (): ThunkType => async (dispatch: Dispatch<ActionType>
         dispatch(getPacksAC(packs))
         dispatch(loadingAC(false))
     } catch (e) {
-        let err = e.response.data.error
+        /*let err = e.response.data.error
         console.log(err)
         dispatch(errorPackAC(err))
-        dispatch(loadingAC(false))
+        dispatch(loadingAC(false))*/
     }
 }
 
@@ -123,10 +123,10 @@ export const addPackTC = (name: string) => async (dispatch: Dispatch<ActionType>
         dispatch(addPackAC(pack))
         dispatch(loadingAC(false))
     } catch (e) {
-        let err = e.response.data.error
+        /*let err = e.response.data.error
         console.log(err)
         dispatch(errorPackAC(err))
-        dispatch(loadingAC(false))
+        dispatch(loadingAC(false))*/
     }
 }
 
@@ -137,10 +137,10 @@ export const deletePackTC = (id: string): ThunkType => async (dispatch: Dispatch
         dispatch(deletePackAC(id))
         dispatch(loadingAC(false))
     } catch (e) {
-        let err = e.response.data.error
+        /*let err = e.response.data.error
         console.log(err)
         dispatch(errorPackAC(err))
-        dispatch(loadingAC(false))
+        dispatch(loadingAC(false))*/
     }
 }
 
@@ -152,10 +152,10 @@ export const updatePackTC = (id: string, name: string, cardsCount: number): Thun
         dispatch(updatePackAC(data._id, data.name, data.cardsCount))
         dispatch(loadingAC(false))
     } catch (e) {
-        let err = e.response.data.error
+        /*let err = e.response.data.error
         console.log(err)
         dispatch(errorPackAC(err))
-        dispatch(loadingAC(false))
+        dispatch(loadingAC(false))*/
     }
 }
 

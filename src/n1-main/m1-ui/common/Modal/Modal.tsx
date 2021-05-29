@@ -35,15 +35,8 @@ export const Modal: React.FC<ModalType> = ({
             <div className={s.modal_dialog} onClick={e => e.stopPropagation()}>
                 <fieldset>
                     <legend>{title}</legend>
-                    <div className={s.modal_body}>
-                        <div className={s.modal_button}>
-                            <div>
-                                <div className={s.modal_content}>{content}</div>
-                            </div>
-                        </div>
-                    </div>
+                    <div className={s.modal_content}>{content}</div>
                 </fieldset>
-
             </div>
         </div>
     )
